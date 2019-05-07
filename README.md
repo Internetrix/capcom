@@ -3,7 +3,7 @@
 capcom
 ======
 
-The goal of capcom is to ...
+The goal of capcom is to .
 
 Installation
 ------------
