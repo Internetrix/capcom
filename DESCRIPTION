@@ -1,0 +1,15 @@
+Package: capcom
+Type: Package
+Title: Utility functions for outlier detection
+Version: 0.1.0
+Authors@R: person("Dean", "Marchiori", email = "dean.marchiori@internetrix.com.au",
+                  role = c("aut", "cre"))
+Description: Utility functions to power outlier detection for digital analytics data analysis.  
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
+Imports: 
+    forecast
+RoxygenNote: 6.1.1
