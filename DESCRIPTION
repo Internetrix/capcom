@@ -5,11 +5,13 @@ Version: 0.1.0
 Authors@R: person("Dean", "Marchiori", email = "dean.marchiori@internetrix.com.au",
                   role = c("aut", "cre"))
 Description: Utility functions to power outlier detection for digital analytics data analysis.  
+Depends: R (>= 3.1.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat
 Imports: 
-    forecast
+    forecast,
+    stats
 RoxygenNote: 6.1.1
