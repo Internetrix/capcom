@@ -25,8 +25,8 @@ multiplier. This scales the wt parameter.}
 \item{iqr_range}{A numeric vector. The range to use in calculating the IQR.}
 }
 \value{
-a list containing the original data with indicated outliers and a list
-of just the outliers.
+a dataframe containing the original data with residual information
+and outlier flags.
 }
 \description{
 A function for time series outlier detection.
@@ -39,4 +39,34 @@ some normality and allow the use of an Inner Quantile Range to be calculated for
 outlier detection. Rather than the standard 3 * IQR, a weighted vector is
 accepted to allow variation in the IQR multipler between two fixed limits set
 by the user.
+}
+\examples{
+data("google_analytics_data")
+fit <- sat_outlier_detect(x = google_analytics_data$conversion_rate,
+                          wt = google_analytics_data$sessions,
+                          index = google_analytics_data$ds,
+                          tr = TRUE)
+
+\dontrun{
+library(ggplot2)
+library(dplyr)
+
+ggplot(fit, aes(index, data)) +
+  geom_line(lwd = 0.2) +
+  geom_point(data = filter(fit, outlier == "Yes"),
+             aes(index, data),
+             colour = "red",
+             size = 1) +
+  geom_ribbon(aes(x = index,
+                 ymin = (data - residuals + resid_lower),
+                 ymax = (data - residuals + resid_upper)),
+              fill = "light blue",
+              alpha = 0.6) +
+  theme_light() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Where are outliers occuring in my Google Analytics Data?",
+       subtitle = "3 months of eCommerce conversion rate data",
+       x = "date",
+       y = "eCommerce Conversion Rate")
+}
 }

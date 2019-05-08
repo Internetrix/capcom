@@ -19,8 +19,37 @@
 #' @param iqr_scaling_factor A numeric vector. The scaling range for the IQR
 #' multiplier. This scales the wt parameter.
 #' @param iqr_range A numeric vector. The range to use in calculating the IQR.
-#' @return a list containing the original data with indicated outliers and a list
-#' of just the outliers.
+#' @return a dataframe containing the original data with residual information
+#' and outlier flags.
+#' @examples
+#' data("google_analytics_data")
+#' fit <- sat_outlier_detect(x = google_analytics_data$conversion_rate,
+#'                           wt = google_analytics_data$sessions,
+#'                           index = google_analytics_data$ds,
+#'                           tr = TRUE)
+#'
+#' \dontrun{
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' ggplot(fit, aes(index, data)) +
+#'   geom_line(lwd = 0.2) +
+#'   geom_point(data = filter(fit, outlier == "Yes"),
+#'              aes(index, data),
+#'              colour = "red",
+#'              size = 1) +
+#'   geom_ribbon(aes(x = index,
+#'                  ymin = (data - residuals + resid_lower),
+#'                  ymax = (data - residuals + resid_upper)),
+#'               fill = "light blue",
+#'               alpha = 0.6) +
+#'   theme_light() +
+#'   scale_y_continuous(labels = scales::percent) +
+#'   labs(title = "Where are outliers occuring in my Google Analytics Data?",
+#'        subtitle = "3 months of eCommerce conversion rate data",
+#'        x = "date",
+#'        y = "eCommerce Conversion Rate")
+#' }
 
 sat_outlier_detect <- function(x, wt, index, tr = TRUE, seasonal_periods = c(24, 168),
                          iqr_scaling_factor = c(1.5, 3),
@@ -65,12 +94,7 @@ sat_outlier_detect <- function(x, wt, index, tr = TRUE, seasonal_periods = c(24,
                        resid_upper,
                        outlier)
 
-  outlier_df <- out_df[out_df$outlier == "Yes",]
-
-  out <- list(output = out_df,
-              outliers = outlier_df)
-
-  return(out)
+  return(out_df)
 
 }
 
