@@ -14,36 +14,28 @@ knitr::opts_chunk$set(
 ```
 # capcom
 
-The goal of capcom is to .
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+```{r, echo = FALSE}                                                                                                       
+version <- as.vector(read.dcf('DESCRIPTION')[, 'Version'])                                                                 
+version <- gsub('-', '.', version)                                                                                         
+```                                                                                                                        
+[![packageversion](https://img.shields.io/badge/Package%20version-`r version`-orange.svg?style=flat-square)](commits/master)
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
+
+The goal of capcom is to provide utility functions to power Internetrix 
+digital data analysis activities and shiny applications.   
+
+Most of the functions are set to work with data from the Google Analytics API
+and perform an opinionated and specific analysis task.  
 
 ## Installation
 
-You can install the released version of capcom from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of capcom from [Github](https://github.com/Internetrix/capcom) with:
 
 ``` r
-install.packages("capcom")
+devtools::install_github('Internetrix/capcom')
 ```
 
-## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

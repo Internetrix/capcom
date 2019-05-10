@@ -3,43 +3,19 @@
 capcom
 ======
 
-The goal of capcom is to .
+[![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--10-yellowgreen.svg)](/commits/master) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+[![packageversion](https://img.shields.io/badge/Package%20version-0.1.0-orange.svg?style=flat-square)](commits/master) [![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
+
+The goal of capcom is to provide utility functions to power Internetrix digital data analysis activities and shiny applications.
+
+Most of the functions are set to work with data from the Google Analytics API and perform an opinionated and specific analysis task.
 
 Installation
 ------------
 
-You can install the released version of capcom from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of capcom from [Github](https://github.com/Internetrix/capcom) with:
 
 ``` r
-install.packages("capcom")
+devtools::install_github('Internetrix/capcom')
 ```
-
-Example
--------
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
