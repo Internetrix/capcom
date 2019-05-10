@@ -1,12 +1,17 @@
 Package: capcom
 Type: Package
-Title: Utility functions for outlier detection
+Title: Utility functions for Internetrix Digital Data Analysis Software 
 Version: 0.1.0
-Authors@R: person("Dean", "Marchiori", email = "dean.marchiori@internetrix.com.au",
-                  role = c("aut", "cre"))
-Description: Utility functions to power outlier detection for digital analytics data analysis.  
+Authors@R: c(
+    person("Dean", "Marchiori", email = "dean.marchiori@internetrix.com.au", role = c("aut", "cre")),
+    person("Rohan", "Wickramasuriya", email = "rohan@uow.edu.au", role = "aut"),
+    person("Internetrix", role = c("cph", "fnd"))
+    )
+Description: This package contains very opinionated and customised functions to perform various data analytics tasks for Internetrix. These usually relate to analysing data from Google Analytics for analysis reports and shiny apps. 
 Depends: R (>= 3.1.0)
 License: GPL-3
+URL: https://github.com/Internetrix/capcom
+BugReports: https://github.com/Internetrix/capcom/issues
 Encoding: UTF-8
 LazyData: true
 Suggests: 
