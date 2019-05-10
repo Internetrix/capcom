@@ -32,5 +32,9 @@ test_that("2nd element dimensionality correct", {
   expect_equal(dim(x[[2]]), dim(input) -c(0,1))
 })
 
-
+test_that("no warnings are returned", {
+  expect_silent(
+    sat_pca(x =  ga_sourcemedium_wide)
+  )
+})
 

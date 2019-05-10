@@ -30,9 +30,11 @@ test_that("outlier col is factor", {
   expect_true(is.factor(fit$outlier))
 })
 
-
-
-
+test_that("no warnings are returned", {
+  expect_silent(
+    sat_outlier_detect(x =  google_analytics_data$conversion_rate)
+    )
+})
 
 
 
