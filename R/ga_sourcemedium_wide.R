@@ -8,6 +8,11 @@
 #' @format A data frame with 2111 rows and 5 variables:
 #' \describe{
 #'   \item{ds}{datetime of the session}
-#'   \item{...}{ga sourceMedium dimension}
+#'   \item{facebook / social}{ga sourceMedium dimension value}
+#'   \item{(direct) / (none)}{ga sourceMedium dimension value}
+#'   \item{google / cpc}{ga sourceMedium dimension value}
+#'   \item{google / organic}{ga sourceMedium dimension value}
 #' }
 "ga_sourcemedium_wide"
+
+
