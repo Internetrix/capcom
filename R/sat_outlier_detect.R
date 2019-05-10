@@ -11,8 +11,10 @@
 #' by the user.
 #'
 #' @param x A numeric vector of length n. The original time series.
-#' @param wt A numeric vector of length n. A vector of optional weights
-#' @param index A vector of Dates for the time series
+#' @param wt A numeric vector of length n. A vector of optional weights. If NULL
+#' the calculation will use the max of the iqr_scaling_factor.
+#' @param index A vector of Dates for the time series. If NULL row numbers will
+#' be used.
 #' @param tr logical. Whether an arcsinh transformation is applied to the residuals
 #' @param seasonal_periods A numeric vector. The seasonal periods to use for
 #' time series decomposition
@@ -51,7 +53,7 @@
 #'        y = "eCommerce Conversion Rate")
 #' }
 
-sat_outlier_detect <- function(x, wt, index = NULL, tr = TRUE, seasonal_periods = c(24, 168),
+sat_outlier_detect <- function(x, wt = NULL, index = NULL, tr = TRUE, seasonal_periods = c(24, 168),
                          iqr_scaling_factor = c(1.5, 3),
                          iqr_range = c(0.25 ,0.75)){
 
@@ -71,15 +73,19 @@ sat_outlier_detect <- function(x, wt, index = NULL, tr = TRUE, seasonal_periods 
   }
 
   # weight scaling
-  wt_tf <- asinh(wt)
-  wt_scaled <- (wt_tf - min(wt_tf))/(max(wt_tf) - min(wt_tf)) * -diff(iqr_scaling_factor) + iqr_scaling_factor[2]
+  if(is.null(wt)){
+    wt_scaled <- iqr_scaling_factor[2]
+  } else {
+    wt_tf <- asinh(wt)
+    wt_scaled <- (wt_tf - min(wt_tf))/(max(wt_tf) - min(wt_tf)) * -diff(iqr_scaling_factor) + iqr_scaling_factor[2]
+  }
 
   # iqr calc
   resid.q <- stats::quantile(residuals, prob = iqr_range, na.rm = TRUE)
   iqr <- unname(diff(resid.q))
   scaled_iqr <- iqr * wt_scaled
-  resid_lower <- resid.q[1] - scaled_iqr
-  resid_upper <- resid.q[2] + scaled_iqr
+  resid_lower <- unname(resid.q[1] - scaled_iqr)
+  resid_upper <- unname(resid.q[2] + scaled_iqr)
 
   # outlier flagging
   outlier <- ifelse(test = residuals > resid_upper | residuals < resid_lower, yes = "Yes", no = "No")
@@ -102,16 +108,6 @@ sat_outlier_detect <- function(x, wt, index = NULL, tr = TRUE, seasonal_periods 
   return(out_df)
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
