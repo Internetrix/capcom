@@ -51,9 +51,14 @@
 #'        y = "eCommerce Conversion Rate")
 #' }
 
-sat_outlier_detect <- function(x, wt, index, tr = TRUE, seasonal_periods = c(24, 168),
+sat_outlier_detect <- function(x, wt, index = NULL, tr = TRUE, seasonal_periods = c(24, 168),
                          iqr_scaling_factor = c(1.5, 3),
                          iqr_range = c(0.25 ,0.75)){
+
+  # special handling
+  if(is.null(index)){
+   index <- seq_along(x)
+  }
 
   # decomposition
   xx <- forecast::msts(data = x, seasonal.periods = seasonal_periods)

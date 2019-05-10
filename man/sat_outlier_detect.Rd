@@ -4,8 +4,9 @@
 \alias{sat_outlier_detect}
 \title{Satellite Outlier Detect}
 \usage{
-sat_outlier_detect(x, wt, index, tr = TRUE, seasonal_periods = c(24,
-  168), iqr_scaling_factor = c(1.5, 3), iqr_range = c(0.25, 0.75))
+sat_outlier_detect(x, wt, index = NULL, tr = TRUE,
+  seasonal_periods = c(24, 168), iqr_scaling_factor = c(1.5, 3),
+  iqr_range = c(0.25, 0.75))
 }
 \arguments{
 \item{x}{A numeric vector of length n. The original time series.}
