@@ -4,16 +4,18 @@
 \alias{sat_outlier_detect}
 \title{Satellite Outlier Detect}
 \usage{
-sat_outlier_detect(x, wt, index = NULL, tr = TRUE,
+sat_outlier_detect(x, wt = NULL, index = NULL, tr = TRUE,
   seasonal_periods = c(24, 168), iqr_scaling_factor = c(1.5, 3),
   iqr_range = c(0.25, 0.75))
 }
 \arguments{
 \item{x}{A numeric vector of length n. The original time series.}
 
-\item{wt}{A numeric vector of length n. A vector of optional weights}
+\item{wt}{A numeric vector of length n. A vector of optional weights. If NULL
+the calculation will use the max of the iqr_scaling_factor.}
 
-\item{index}{A vector of Dates for the time series}
+\item{index}{A vector of Dates for the time series. If NULL row numbers will
+be used.}
 
 \item{tr}{logical. Whether an arcsinh transformation is applied to the residuals}
 
