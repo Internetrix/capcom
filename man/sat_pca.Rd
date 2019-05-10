@@ -27,3 +27,19 @@ For a given matrix of values, the function will perform principal component
 analysis and calculate a variable importance measure based on the PCA
 scores and loadings to determine a local measure of variable importance.
 }
+\examples{
+\dontrun{
+data("google_analytics_sourcemedium")
+
+library(tidyr)
+library(dplyr)
+library(lubridate)
+
+ga_sourcemedium_wide <- google_analytics_sourcemedium \%>\%
+mutate(ds = ymd_h(paste(date, hour))) \%>\%
+spread(sourceMedium, sessions, fill = 0) \%>\%
+select(-date, -hour)
+
+x <- sat_pca(x = ga_sourcemedium_wide, min_nonzero = 1, min_val = 0.01)
+ }
+}
