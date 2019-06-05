@@ -1,7 +1,7 @@
 Package: capcom
 Type: Package
 Title: Utility functions for Internetrix Digital Data Analysis Software 
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Dean", "Marchiori", email = "dean.marchiori@internetrix.com.au", role = c("aut", "cre")),
     person("Rohan", "Wickramasuriya", email = "rohan@uow.edu.au", role = "aut"),
