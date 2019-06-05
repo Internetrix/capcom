@@ -1,0 +1,13 @@
+#' Hourly Google Merchant Store Data
+#'
+#' A dataset containing 90 days of hourly Google Merchant Store Demo data.
+#' \url{https://support.google.com/analytics/answer/6367342?hl=en}
+#'
+#' @format A data frame with 2159 rows and 4 variables:
+#' \describe{
+#'   \item{date}{The dates (YYYYMMDD) of the active date range.}
+#'   \item{hour}{The hour of the day. Values range from 00 to 23.}
+#'   \item{transactions}{Transactions is the total number of completed purchases on your site.}
+#'   \item{sessions}{Total number of Sessions within the date range. }
+#' }
+"hourly_google_merch"
